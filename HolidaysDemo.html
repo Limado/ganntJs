@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Neo Gantt Chart</title>
+   
+</head>
+<body>
+<input type="button" onclick="_ganttChart.Download();" value="Descargar" />
+<hr>
+<div id="chart_div" style="width:1200px;margin-left:5%; ">
+	
+</div>
+<hr>
+</body>
+</html>
+<script type="text/javascript" src="ganttJs.js"></script>
+
+<script>
+
+var row1 = ["1142","Lucas Ayala",null,"2017-01-16 00:00:00.000","2017-01-27 00:00:00.000",null,0];
+var row2 = ["1143","Ivan Maciel",null,"2017-01-23 00:00:00.000","2017-01-27 00:00:00.000",null,0];
+var row3 = ["1144","Rodrigo Balastro",null,"2017-01-23 00:00:00.000","2017-02-03 00:00:00.000",null,0];
+var row4 = ["1155","Norberto Sanchez",null,"2017-01-23 00:00:00.000","2017-01-27 00:00:00.000",null,0];
+var row5 = ["1156","Leandro Bermudez",null,"2017-01-30 00:00:00.000","2017-02-10 00:00:00.000",null,0];
+
+var Datos = [row1,row2,row3,row4,row5];
+
+dibuja();
+var _ganttChart;
+function dibuja(){
+	 _ganttChart = new GanttChart("chart_div", "", Datos, "Vacaciones");
+	 var options = {	
+					"textMarginLeft":8,
+					"titleSpace":200,
+					"rowHeight":50,
+					"projectRowHeight":35,
+					"toolTipLineHeight":20,
+					"toolTipBackColor":"#d3d3d3",
+					"toolTipFontColor":"#fff",
+					"workHours":8,
+					"daySeparatorColor":"#d3d3d3",
+					"projectRowFontColor":"black",
+					"projectRowColor":"rgb(163, 210, 255)",
+					"projectRowFont":"12pt Calibri",
+					"dependencyLinePattern":"dotted",
+					"nonWorkingDayColor":"rgba(200, 50, 0, 0.5)",
+					"nonWorkingWeekendColor":"rgba(200, 80, 0, 0.5)",
+					"weekendColor":"rgba(200, 80, 0, 0.1)",
+					"item" :{
+							 "color" : "rgb(163, 198, 255)",
+							 "colorHover" : "rgb(66, 134, 244)",
+							 "font" : "11pt Calibri",
+							 "fontColor" : "black",
+							 "dependencyLineColor" : "rgb(57, 56, 63)"
+							}
+					}
+	var calendar = ['2016-01-23 00:00:00.000','2016-01-12 00:00:00.000'];
+	_ganttChart.SetNonWorkingDay(calendar);
+	var weekend = [0,6]; // Para setear dias no laborales repetitivos como Sábado y Domingo.
+	//_ganttChart.SetWeekend(weekend);
+	_ganttChart.SetOptions(options);
+	_ganttChart.Init();
+	_ganttChart.Draw();
+}
+
+
+</script>
