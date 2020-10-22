@@ -1,2 +1,3 @@
 # ganntJs
-Libreria JavaScript para creación de gráficos Gantt
+Gantt chart creation. Javascript and html5.
+View exaples to implement.
